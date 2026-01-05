@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceki Scoreboard - Slide 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+    <div class="container">
+        <h1>semoga CEKI dot kom V2</h1>
+        <div class="round-counter">
+            <span class="round-label">🎲 GAME:</span>
+            <span id="roundNumber">1</span>
+        </div>
+        <table class="score-table">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="player-header">
+                            <img class="player-avatar" id="avatar1" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234299e1'/%3E%3Ccircle cx='50' cy='40' r='15' fill='white'/%3E%3Cpath d='M30 75 Q50 65 70 75' stroke='white' stroke-width='8' fill='none'/%3E%3C/svg%3E" onclick="uploadAvatar(1)" title="Click to upload avatar">
+                            <span id="name1" contenteditable="true">1</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="player-header">
+                            <img class="player-avatar" id="avatar2" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f56565'/%3E%3Ccircle cx='50' cy='40' r='15' fill='white'/%3E%3Cpath d='M30 75 Q50 65 70 75' stroke='white' stroke-width='8' fill='none'/%3E%3C/svg%3E" onclick="uploadAvatar(2)" title="Click to upload avatar">
+                            <span id="name2" contenteditable="true">2</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="player-header">
+                            <img class="player-avatar" id="avatar3" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2348bb78'/%3E%3Ccircle cx='50' cy='40' r='15' fill='white'/%3E%3Cpath d='M30 75 Q50 65 70 75' stroke='white' stroke-width='8' fill='none'/%3E%3C/svg%3E" onclick="uploadAvatar(3)" title="Click to upload avatar">
+                            <span id="name3" contenteditable="true">3</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="player-header">
+                            <img class="player-avatar" id="avatar4" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ed8936'/%3E%3Ccircle cx='50' cy='40' r='15' fill='white'/%3E%3Cpath d='M30 75 Q50 65 70 75' stroke='white' stroke-width='8' fill='none'/%3E%3C/svg%3E" onclick="uploadAvatar(4)" title="Click to upload avatar">
+                            <span id="name4" contenteditable="true">4</span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="scoreBody">
+                <!-- Dynamic rows will be added here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td id="total1">TOTAL</td>
+                    <td id="total2">TOTAL</td>
+                    <td id="total3">TOTAL</td>
+                    <td id="total4">TOTAL</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="section">
+            <table class="input-table">
+                <thead>
+                    <tr>
+                        <th id="header1" class="player-name">Player 1</th>
+                        <th id="header2" class="player-name">Player 2</th>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" id="scoreInput1" placeholder="ISI SCORE"></td>
+                                <td><input type="number" id="scoreInput2" placeholder="ISI SCORE"></td>
+                            </tr>
+                        </tbody> 
+                        <th id="header3" class="player-name">Player 3</th>
+                        <th id="header4" class="player-name">Player 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" id="scoreInput3" placeholder="ISI SCORE"></td>
+                        <td><input type="number" id="scoreInput4" placeholder="ISI SCORE"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="win-score-section">
+            <label for="winScore">Win Score:</label>
+            <select id="winScore">
+                <option value="100">100</option>
+                <option value="200" selected>200</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+            </select>
+        </div>
+
+        <button class="add-score" onclick="addScore()">ADD SCORE</button>
+        
+        <div class="export-buttons">
+            <button class="export-btn" onclick="saveGame()" title="Save game progress">💾 Save Game</button>
+            <button class="export-btn" onclick="printScores()" title="Print scoreboard">🖨️ Print</button>
+        </div>
+        
+        <div class="score-info">
+            <p class="lowest-score">ngocokkkkk yaaa wkwkwkkw: <span id="lowestScoreName">-</span></p>
+            <p class="highest-score">Nama dengan skor tertinggi: <span id="highestScoreName">-</span></p>
+        </div>
+    </div>
+    <canvas id="confetti-canvas"></canvas>
+    <script src="script3.js"></script>
+</body>
+</html>
