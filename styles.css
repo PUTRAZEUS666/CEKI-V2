@@ -1,3 +1,32 @@
+/* Responsive input table for mobile */
+@media (max-width: 600px) {
+    .input-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .input-table thead,
+    .input-table tbody {
+        display: block;
+        width: 100%;
+    }
+    .input-table tr {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .input-table th,
+    .input-table td {
+        flex: 1 1 45%;
+        min-width: 120px;
+        box-sizing: border-box;
+        padding: 4px;
+    }
+    .input-table input {
+        width: 100%;
+        font-size: 1em;
+    }
+}
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
