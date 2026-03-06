@@ -1,3 +1,27 @@
+@media (max-width: 600px) {
+    .input-table th,
+    .input-table td {
+        font-size: 1em;
+        padding: 6px;
+        min-width: 100px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .input-table input {
+        width: 90%;
+        font-size: 1em;
+        padding: 6px;
+        margin: 0 auto;
+        display: block;
+    }
+    .input-table {
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 4px;
+        table-layout: fixed;
+    }
+}
 /* Responsive 2x2 input table for mobile */
 @media (max-width: 600px) {
     .input-table th,
