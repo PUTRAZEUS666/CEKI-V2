@@ -222,10 +222,14 @@ function syncTableNames() {
 }
 
 // Tambahkan event listener untuk perubahan nama
-for (let i = 1; i <= 4; i++) {
-    const nameElement = document.getElementById(`name${i}`);
-    nameElement.addEventListener('input', syncTableNames);
-}
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i = 1; i <= 4; i++) {
+        const nameElement = document.getElementById(`name${i}`);
+        if (nameElement) {
+            nameElement.addEventListener('input', syncTableNames);
+        }
+    }
+});
 
 function addScore() {
     let inputScores = [
@@ -342,29 +346,44 @@ function syncPlayerNames() {
 }
 
 // Tambahkan event listener untuk perubahan nama
-for (let i = 1; i <= 4; i++) {
-    const nameElement = document.getElementById(`name${i}`);
-    if (nameElement) {
-        nameElement.addEventListener('input', syncPlayerNames);
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i = 1; i <= 4; i++) {
+        const nameElement = document.getElementById(`name${i}`);
+        if (nameElement) {
+            nameElement.addEventListener('input', syncPlayerNames);
+        }
     }
-}
+});
 
 
 
 function checkOvertaken(previousScores) {
-    let maxScore = Math.max(...scores); // Cari skor tertinggi saat ini
-    let maxIndex = scores.indexOf(maxScore); // Indeks pemain dengan skor tertinggi
-
+    // Rule 1: Only players with previous score >= 105 can be overtaken
     for (let i = 0; i < scores.length; i++) {
-        // Cek apakah pemain ini pernah memiliki skor > 100
-        if (previousScores[i] > 100) {
-            // Cek apakah skor pemain ini sekarang terbalap (lebih kecil dari skor tertinggi)
-            if (scores[i] < maxScore && i !== maxIndex) {
-                scores[i] = 0; // Reset skor menjadi 0
-                playOvertakeSound(); // Play sound effect
-                setTimeout(() => {
-                    alert(`⚠️ ${players[i]} TERBALAP! Skor direset ke 0. ⚠️`);
-                }, 200);
+        if (previousScores[i] < 105) continue;
+
+        for (let j = 0; j < scores.length; j++) {
+            if (i === j) continue;
+
+            // Only allow overtaking if j was previously below i
+            if (previousScores[j] < previousScores[i]) {
+                // j overtakes i if j's score now > i's score
+                if (scores[j] > scores[i]) {
+                    if (scores[i] > 0) {
+                        let gained = scores[i] - previousScores[i];
+                        scores[i] = 0;
+                        playOvertakeSound();
+                        setTimeout(() => {
+                            alert(`⚠️ ${players[i]} TERBALAP OLEH ${players[j]} (dapat ${gained} poin)`);
+                        }, 200);
+                    }
+                    break;
+                }
+            }
+            // If scores are equal, only allow overtaking if j was previously below i
+            else if (previousScores[j] < previousScores[i] && scores[j] === scores[i]) {
+                // No overtaking if scores are equal, but keep logic for clarity
+                // (do nothing)
             }
         }
     }

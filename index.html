@@ -64,19 +64,14 @@
                     <tr>
                         <th id="header1" class="player-name">Player 1</th>
                         <th id="header2" class="player-name">Player 2</th>
-                    </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="number" id="scoreInput1" placeholder="ISI SCORE"></td>
-                                <td><input type="number" id="scoreInput2" placeholder="ISI SCORE"></td>
-                            </tr>
-                        </tbody> 
                         <th id="header3" class="player-name">Player 3</th>
                         <th id="header4" class="player-name">Player 4</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td><input type="number" id="scoreInput1" placeholder="ISI SCORE"></td>
+                        <td><input type="number" id="scoreInput2" placeholder="ISI SCORE"></td>
                         <td><input type="number" id="scoreInput3" placeholder="ISI SCORE"></td>
                         <td><input type="number" id="scoreInput4" placeholder="ISI SCORE"></td>
                     </tr>
@@ -106,7 +101,7 @@
             <p class="highest-score">Nama dengan skor tertinggi: <span id="highestScoreName">-</span></p>
         </div>
     </div>
-    <canvas id="confetti-canvas"></canvas>
+    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none; z-index: 999;"></canvas>
     <script src="script3.js"></script>
 </body>
 </html>
